@@ -77,7 +77,7 @@ jobs:
         with:
           ref: ${{ needs.update-specs.outputs.git_ref }}
       - name: Print build_date.txt
-      - run: cat build_date.txt
+        run: cat build_date.txt
       - name: Print git tag
         run: git describe --tags --abbrev=0
     
