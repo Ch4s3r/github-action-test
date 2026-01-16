@@ -16,6 +16,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "$(date)" > build_date.txt
+      - name: Print build_date.txt
+        run: cat build_date.txt
       - name: GIT commit and push changes
         run: |
           git config user.name "username"
