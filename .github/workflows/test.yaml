@@ -6,6 +6,8 @@ on:
 jobs:
   update-specs:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       git_ref: ${{ steps.commit.outputs.git_ref }}
     steps:
