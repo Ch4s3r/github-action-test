@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "$(date)" > build_date.txt
       - name: GIT commit and push changes
         run: |
@@ -33,6 +35,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ needs.update-specs.outputs.git_ref }}
       - name: Bump Minor Version
         id: bump_version
@@ -71,10 +74,11 @@ jobs:
   print-build-date:
     name: Print Build Date
     runs-on: ubuntu-latest
-    needs: update-specs
+    needs: tag
     steps:
       - uses: actions/checkout@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ needs.update-specs.outputs.git_ref }}
       - name: Print build_date.txt
         run: cat build_date.txt
